@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class NodoService {
@@ -19,5 +20,9 @@ public class NodoService {
 
     public Nodo guardarNodo(Nodo nodo){
         return nodoRepository.save(nodo);
+    }
+
+    public Optional<Nodo> obtenerPorId(Long id){
+        return nodoRepository.findById(id);
     }
 }

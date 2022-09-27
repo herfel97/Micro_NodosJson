@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/nodo")
@@ -15,16 +16,19 @@ public class NodoController {
     NodoService nodoService;
 
     @GetMapping()
-    public ArrayList<Nodo> obtenerNodos(){
+    public ArrayList<Nodo> obtenerNodos() {
         return nodoService.obtenerNodos();
     }
 
     @PostMapping()
-    public Nodo guardarNodo(@RequestBody Nodo nodo){
+    public Nodo guardarNodo(@RequestBody Nodo nodo) {
         return this.nodoService.guardarNodo(nodo);
     }
 
-
+    @GetMapping(path = "/{id}")
+    public Optional<Nodo> obtenerNodoPorId(@PathVariable("id") Long id) {
+        return nodoService.obtenerPorId(id);
+    }
 
 
 }
