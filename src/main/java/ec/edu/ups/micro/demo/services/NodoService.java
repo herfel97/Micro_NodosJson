@@ -6,10 +6,12 @@ import ec.edu.ups.micro.demo.repository.NodoRepository;
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import sun.awt.X11.XSystemTrayPeer;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -42,7 +44,22 @@ public class NodoService {
         System.out.println("temperatureSensor: "+json.getInt("temperatureSensor"));
         System.out.println("humiditySensor: "+json.getInt("humiditySensor"));
 
+        Nodo nodo = new Nodo();
+        nodo.setM1(json.getInt("temperatureSensor"));
+        nodo.setM2(json.getInt("humiditySensor"));
+        nodo.setFecha(root.getRxInfo().get(0).getTime());
+
+
+        nodoRepository.save(nodo);
+
         return root;
+    }
+
+    public ArrayList<Nodo> obtenerMedidasPorFecha(Date date){
+        nodoRepository.
+
+
+
     }
 
 }
