@@ -13,6 +13,13 @@ public class Nodo {
     private String m1;
     private int m2;
 
+    /*JSON Chirpstack*/
+    private String applicationID;
+    private String applicationName;
+    private String deviceName;
+    private String devEUI;
+
+
     public Nodo(){
 
     }

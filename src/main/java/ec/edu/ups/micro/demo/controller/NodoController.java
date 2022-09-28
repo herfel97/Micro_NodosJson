@@ -1,6 +1,7 @@
 package ec.edu.ups.micro.demo.controller;
 
 import ec.edu.ups.micro.demo.models.Nodo;
+import ec.edu.ups.micro.demo.models.Root;
 import ec.edu.ups.micro.demo.services.NodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,12 @@ public class NodoController {
     public Optional<Nodo> obtenerNodoPorId(@PathVariable("id") Long id) {
         return nodoService.obtenerPorId(id);
     }
+
+    @PostMapping(path = "/generar")
+    public Root registrarPeticion(@RequestBody Root root){
+        return this.nodoService.registroPeticion(root);
+        }
+
 
 
 }
