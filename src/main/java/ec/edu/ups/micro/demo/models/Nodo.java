@@ -3,7 +3,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "medidaC02")
+@Table(name = "nodos")
 public class Nodo {
 
     @Id
@@ -13,6 +13,7 @@ public class Nodo {
 
     private int m1;
     private int m2;
+    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     public Nodo(){

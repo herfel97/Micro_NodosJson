@@ -29,18 +29,14 @@ public class NodoController {
 
     @GetMapping(path = "/{id}")
     public Optional<Nodo> obtenerNodoPorId(@PathVariable("id") Long id) {
-        return nodoService.obtenerPorId(id);
+        return this.nodoService.obtenerPorId(id);
     }
 
     @PostMapping(path = "/generar")
     public Root registrarPeticion(@RequestBody Root root){
-        return this.nodoService.registroPeticion(root);
-    }
+        return null;
 
-    @PostMapping(path = "/porfecha")
-    public ArrayList<Nodo> obtenerMedicionesPorFecha(@PathVariable("fecha") Date date){
-        return
+        //return this.nodoService.registroPeticion(root);
     }
-
 
 }
