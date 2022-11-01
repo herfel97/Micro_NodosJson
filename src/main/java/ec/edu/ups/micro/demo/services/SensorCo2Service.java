@@ -32,6 +32,8 @@ public class SensorCo2Service {
         SensorCO2 sensorCO2 = new SensorCO2();
 
         sensorCO2.setFecha(root.getRxInfo().get(0).getTime());
+        sensorCO2.setFechaBusq(root.getRxInfo().get(0).getTime());
+        sensorCO2.setHora(root.getRxInfo().get(0).getTime());
         sensorCO2.setDeviceName(root.getDeviceName());
         sensorCO2.setCo2_A(json.getDouble("Co2_A"));
         sensorCO2.setCo2_b(json.getDouble("Co2_b"));
@@ -50,7 +52,6 @@ public class SensorCo2Service {
     }
 
     public String listar(String fecha) throws Exception {
-
         Date sdf  = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
         List<SensorCO2> listarSensoresPorFecha = sensorCo2Repository.listarSensoresPorFecha(sdf);
         Type listType = new TypeToken<List<SensorCO2>>() {}.getType();
@@ -60,6 +61,28 @@ public class SensorCo2Service {
         String json = gson.toJson(listarSensoresPorFecha, listType);
 
         return json;
+    }
+
+    public String listaMedicionesPorNodo(String nombreDispositivo){
+        Type listType = new TypeToken<List<SensorCO2>>() {}.getType();
+        List<SensorCO2> lista = sensorCo2Repository.listarMedicionesPorDispositivo(nombreDispositivo);
+        Gson gson = new Gson();
+        String json =gson.toJson(lista,listType);
+
+        return json;
+    }
+
+    public String listarMedicionesPorNodoyFecha(String fecha, String nodo) throws Exception {
+        Date sdf1  = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+        List<SensorCO2> listarSensoresPorFecha = sensorCo2Repository.listarMedicionesPorDispositivoyFecha(nodo,sdf1);
+        Type listType = new TypeToken<List<SensorCO2>>() {}.getType();
+
+        System.out.println(listarSensoresPorFecha.size());
+        Gson gson = new Gson();
+        String json = gson.toJson(listarSensoresPorFecha, listType);
+
+        return json;
+
     }
 
 }

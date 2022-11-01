@@ -35,8 +35,6 @@ public class NodoController {
     @PostMapping(path = "/generar")
     public Root registrarPeticion(@RequestBody Root root){
         return null;
-
-        //return this.nodoService.registroPeticion(root);
     }
 
 }

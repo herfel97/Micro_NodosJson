@@ -14,12 +14,26 @@ public class SensorCO2 {
     @Column(unique = true, nullable = false)
     private Long id;
     private String deviceName;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date fechaBusq;
+    @Temporal(TemporalType.TIME)
+    private Date hora;
+
     private double Co2_A;
     private double Co2_b;
+
+    public Date getFechaBusq() {
+        return fechaBusq;
+    }
+
+    public void setFechaBusq(Date fechaBusq) {
+        this.fechaBusq = fechaBusq;
+    }
 
     public String getDeviceName() {
         return deviceName;
@@ -31,6 +45,14 @@ public class SensorCO2 {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
     }
 
     public void setFecha(Date fecha) {
